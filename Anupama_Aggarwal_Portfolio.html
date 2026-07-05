@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anupama Aggarwal — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #13132A; --dark2: #1E1E3A; --pink: #DC1682; --pink-light: #f06ab5;
+    --pink-muted: rgba(220,22,130,0.12); --white: #ffffff; --offwhite: #F8F6FB;
+    --text: #2D2D40; --text-light: #6B6B8A; --border: rgba(220,22,130,0.2);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', Arial, sans-serif; background: var(--offwhite); color: var(--text); line-height: 1.6; }
+
+  /* HERO */
+  .hero { background: var(--dark); padding: 60px 80px 50px; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; top:-80px; right:-80px; width:320px; height:320px; background:radial-gradient(circle,rgba(220,22,130,.18) 0%,transparent 70%); border-radius:50%; }
+  .hero-tag { display:inline-block; background:var(--pink-muted); border:1px solid var(--pink); color:var(--pink); font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; border-radius:20px; margin-bottom:20px; }
+  .hero h1 { font-family:'Montserrat',sans-serif; font-size:48px; font-weight:800; color:var(--white); letter-spacing:1px; line-height:1.1; margin-bottom:10px; }
+  .hero h1 span { color:var(--pink); }
+  .hero-sub { font-family:'Montserrat',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,.5); letter-spacing:3px; text-transform:uppercase; margin-bottom:24px; }
+  .hero-intro { font-size:15px; color:rgba(255,255,255,.75); max-width:680px; line-height:1.7; font-style:italic; }
+  .hero-intro strong { color:var(--pink-light); font-style:normal; }
+  .hero-badges { display:flex; gap:12px; margin-top:28px; flex-wrap:wrap; }
+  .hero-badge { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.7); font-size:11px; padding:6px 14px; border-radius:20px; }
+  .hero-badge.pink { background:rgba(220,22,130,.15); border-color:var(--pink); color:var(--pink-light); font-weight:600; }
+
+  /* NAV */
+  .nav { background:var(--dark2); border-bottom:1px solid rgba(220,22,130,.2); padding:0 80px; display:flex; overflow-x:auto; position:sticky; top:0; z-index:100; }
+  .nav a { color:rgba(255,255,255,.55); text-decoration:none; font-family:'Montserrat',sans-serif; font-size:10.5px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:14px 18px; border-bottom:2px solid transparent; white-space:nowrap; transition:all .2s; }
+  .nav a:hover { color:var(--pink); border-bottom-color:var(--pink); }
+
+  /* LAYOUT */
+  .main { max-width:1100px; margin:0 auto; padding:60px 40px; }
+
+  /* STATS */
+  .stat-row { display:flex; gap:20px; margin-bottom:40px; flex-wrap:wrap; }
+  .stat-box { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:16px 20px; flex:1; min-width:130px; }
+  .stat-box .stat-num { font-family:'Montserrat',sans-serif; font-size:22px; font-weight:800; color:var(--pink); }
+  .stat-box .stat-label { font-size:11px; color:var(--text-light); margin-top:2px; }
+
+  /* SECTION */
+  .section { margin-bottom:70px; }
+  .brand-badge { display:inline-flex; align-items:center; gap:8px; background:var(--dark); color:white; font-family:'Montserrat',sans-serif; font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 10px 4px 8px; border-radius:4px; margin-bottom:20px; }
+  .brand-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--pink); }
+  .section-label { font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; color:var(--pink); letter-spacing:2.5px; text-transform:uppercase; margin-bottom:8px; }
+  .section-title { font-family:'Montserrat',sans-serif; font-size:26px; font-weight:800; color:var(--dark); margin-bottom:8px; line-height:1.2; }
+  .section-desc { font-size:14px; color:var(--text-light); max-width:640px; margin-bottom:32px; line-height:1.7; }
+  .section-divider { width:48px; height:3px; background:var(--pink); border-radius:2px; margin-bottom:32px; }
+
+  /* CAMPAIGN CARDS */
+  .campaign-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:24px; }
+  .campaign-card { background:var(--white); border-radius:12px; overflow:hidden; border:1px solid var(--border); transition:transform .2s,box-shadow .2s; }
+  .campaign-card:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(220,22,130,.12); }
+  .card-header { background:var(--dark); padding:18px 20px 16px; }
+  .card-header.mia-hdr { background:linear-gradient(135deg,var(--dark) 0%,#2A0A1A 100%); }
+  .card-header.indriya-hdr { background:linear-gradient(135deg,#0A1A2A 0%,#0D2040 100%); }
+  .card-tag { font-family:'Montserrat',sans-serif; font-size:8px; font-weight:700; color:var(--pink); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:8px; }
+  .card-title { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; color:var(--white); line-height:1.3; }
+  .card-body { padding:16px 20px 18px; }
+  .card-desc { font-size:13px; color:var(--text-light); line-height:1.65; margin-bottom:14px; }
+  .card-links { display:flex; gap:8px; flex-wrap:wrap; }
+
+  /* BUTTONS */
+  .btn { display:inline-flex; align-items:center; gap:6px; font-family:'Montserrat',sans-serif; font-size:10px; font-weight:700; letter-spacing:.5px; padding:7px 14px; border-radius:6px; text-decoration:none; transition:background .2s,color .2s; }
+  .btn-dark { background:var(--dark); color:white; } .btn-dark:hover { background:var(--pink); }
+  .btn-pink { background:var(--pink); color:white; } .btn-pink:hover { background:#b5126b; }
+  .btn-outline { background:transparent; border:1px solid var(--border); color:var(--text); } .btn-outline:hover { border-color:var(--pink); color:var(--pink); }
+  .btn svg { width:11px; height:11px; fill:currentColor; flex-shrink:0; }
+
+  /* SERIES */
+  .series-card { background:var(--white); border-radius:12px; border:1px solid var(--border); padding:24px 28px; margin-bottom:20px; }
+  .series-title { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--dark); margin-bottom:8px; }
+  .series-desc { font-size:13px; color:var(--text-light); line-height:1.7; margin-bottom:16px; }
+  .series-links { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag-link { display:inline-block; font-size:11px; font-weight:600; padding:5px 12px; border-radius:6px; text-decoration:none; transition:all .2s; }
+  .tag-pink { background:var(--pink-muted); color:var(--pink); border:1px solid var(--pink); } .tag-pink:hover { background:var(--pink); color:white; }
+  .tag-default { background:var(--offwhite); color:var(--text); border:1px solid var(--border); } .tag-default:hover { background:var(--pink); color:white; border-color:var(--pink); }
+
+  /* INDRIYA BANNER */
+  .indriya-banner { background:linear-gradient(135deg,#0A1A2A 0%,#0D2040 100%); border-radius:12px; padding:24px 28px; margin-bottom:28px; display:flex; align-items:center; gap:20px; border:1px solid rgba(220,22,130,.25); }
+  .indriya-logo-box { background:rgba(220,22,130,.15); border:1px solid var(--pink); border-radius:8px; padding:12px 18px; text-align:center; flex-shrink:0; }
+  .indriya-logo-box .brand-name { font-family:'Montserrat',sans-serif; font-size:14px; font-weight:800; color:white; letter-spacing:2px; text-transform:uppercase; }
+  .indriya-logo-box .brand-sub { font-size:9px; color:rgba(255,255,255,.5); letter-spacing:1px; text-transform:uppercase; }
+  .indriya-info h3 { font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; color:white; margin-bottom:6px; }
+  .indriya-info p { font-size:13px; color:rgba(255,255,255,.6); line-height:1.6; }
+
+  /* BAU */
+  .bau-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; }
+  .bau-item { background:var(--white); border:1px solid var(--border); border-radius:8px; padding:12px 14px; font-size:12px; font-weight:500; color:var(--text); text-decoration:none; display:flex; align-items:center; gap:8px; transition:all .2s; }
+  .bau-item::before { content:'◆'; color:var(--pink); font-size:8px; flex-shrink:0; }
+  .bau-item:hover { border-color:var(--pink); color:var(--pink); background:var(--pink-muted); }
+
+  /* FOOTER */
+  .footer { background:var(--dark); padding:32px 80px; text-align:center; }
+  .footer p { color:rgba(255,255,255,.4); font-size:12px; }
+  .footer a { color:var(--pink); text-decoration:none; }
+
+  /* YT/IG icons */
+  .ico-yt,.ico-ig { display:inline-block; width:11px; height:11px; fill:currentColor; vertical-align:middle; }
+
+  @media(max-width:768px){.hero{padding:40px 24px;}.hero h1{font-size:32px;}.nav{padding:0 16px;}.main{padding:40px 20px;}.footer{padding:24px;}.indriya-banner{flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">★ Campaign Portfolio</div>
+  <h1>Anupama <span>Aggarwal</span></h1>
+  <div class="hero-sub">Creative · Media · Product · Brand Strategy</div>
+  <p class="hero-intro">Welcome to <strong>Anupama's Cove</strong> — a curated bay of campaigns built from core consumer human insights and delivered through brand storytelling to drive notable impact.</p>
+  <div class="hero-badges">
+    <div class="hero-badge pink">★ 30 Under 30 · Brand Marketers Academy, Cannes Lions 2026</div>
+    <div class="hero-badge">30 Under 30 · E4M Pitch Marketing Awards 2023</div>
+    <div class="hero-badge">3× Gold · IMAs, ICMA, Maddies</div>
+    <div class="hero-badge">100Cr+ Impressions</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#mia-films">Mia Campaign Films</a>
+  <a href="#favourites">Favourite Campaigns</a>
+  <a href="#occasions">Occasions & Collections</a>
+  <a href="#indriya">Indriya</a>
+  <a href="#bau">BAU Content</a>
+  <a href="#media-innovations">Media Innovations</a>
+</nav>
+
+<div class="main">
+
+  <!-- STATS -->
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-num">100Cr+</div><div class="stat-label">Campaign Impressions (Mia)</div></div>
+    <div class="stat-box"><div class="stat-num">500M+</div><div class="stat-label">Indriya Bridal GTM</div></div>
+    <div class="stat-box"><div class="stat-num">40%</div><div class="stat-label">YoY Revenue Growth</div></div>
+    <div class="stat-box"><div class="stat-num">3×</div><div class="stat-label">Gold Awards</div></div>
+    <div class="stat-box"><div class="stat-num">35%</div><div class="stat-label">Brand Awareness Uplift</div></div>
+  </div>
+
+  <!-- ── MIA CAMPAIGN FILMS ── -->
+  <div class="section" id="mia-films">
+    <div class="brand-badge"><span class="dot"></span>Mia by Tanishq · Titan Company Ltd</div>
+    <div class="section-label">Star-Studded</div>
+    <div class="section-title">Campaign Films</div>
+    <p class="section-desc">A curated collection of brand films — each rooted in a consumer truth, brought to life through culture, celebrity, and storytelling that transcends category.</p>
+    <div class="section-divider"></div>
+    <div class="campaign-grid">
+
+      <div class="campaign-card">
+        <div class="card-header mia-hdr">
+          <div class="card-tag">Valentine's 2024 · Campaign Film</div>
+          <div class="card-title">Mia Valentine's ft. Dinesh Karthik & Dipika Pallikal</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">A narrative celebrating modern relationships — the intimate, unspoken moments that define love. Featuring sports power couple Dinesh Karthik and Dipika Pallikal, the film integrates Mia's signature Toi-et-Moi ring, solidifying Mia's dominance over Valentine's trends.</p>
+          <div class="card-links">
+            <a href="https://www.youtube.com/watch?v=STmX6tTSNPg" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header mia-hdr">
+          <div class="card-tag">DE&I · Campaign Film · Para-Athlete First</div>
+          <div class="card-title">Dekhna Hai Toh Khel Dekho ft. Sheetal Devi</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Shifted the gaze from difference to brilliance featuring para-archer Sheetal Devi. Mia's evil eye anklet became a symbol of admiration and protection — and Mia became the first jewellery brand to champion a para-athlete.</p>
+          <div class="card-links">
+            <a href="https://www.youtube.com/watch?v=8u1dM4MfUWk" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header mia-hdr">
+          <div class="card-tag">Festive · Brand Repositioning · Brand Identity</div>
+          <div class="card-title">For The Star In You ft. Rakul Preet Singh</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Marked the grand unveiling of Rakul Preet Singh as Mia's brand ambassador and redefined jewellery as a catalyst for self-assurance. Drove 35% lift in consideration (CTR 3.5%, VTR 65%). Became Mia's lasting brand identity.</p>
+          <div class="card-links">
+            <a href="https://www.youtube.com/watch?v=wRRKh2sexPw" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header mia-hdr">
+          <div class="card-tag">Sports Partnership · RCB Women's Team · 100Cr+ Impressions</div>
+          <div class="card-title">#SheGotGame — Mia x RCB Women's Team</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">As official jewellery sponsor for RCB's first-ever women's team, this campaign broke barriers in male-dominated spaces. Mia solidified its position as a brand for modern women who own their moment — on and off the field. Delivered 100Cr+ impressions.</p>
+          <div class="card-links">
+            <a href="https://www.youtube.com/watch?v=tJAhLNXut40" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header mia-hdr">
+          <div class="card-tag">First Campaign · DE&I · Movement</div>
+          <div class="card-title">#ThisIsMe — Celebrating Real Women</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Cast real women instead of models — Riza Reji (India's first model with Down syndrome), Sakshi Sindhwani, MMA champion Asha Roka, LGBTQ+ icon Queen Andro, rapper Dee MC. #ThisIsMe became a movement, driving record brand search spikes.</p>
+          <div class="card-links">
+            <a href="https://www.youtube.com/watch?v=HqZNDa8zHMk" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FAVOURITE CAMPAIGNS ── -->
+  <div class="section" id="favourites">
+    <div class="brand-badge"><span class="dot"></span>Mia by Tanishq · Content & Collections</div>
+    <div class="section-label">Closest to My Heart</div>
+    <div class="section-title">My Favourite Campaigns</div>
+    <p class="section-desc">Content pieces that brought out the best of my creative, operational, and strategic skills — conceived end-to-end.</p>
+    <div class="section-divider"></div>
+
+    <div class="series-card">
+      <div class="series-title">✦ Starburst Social Media Content Series</div>
+      <p class="series-desc">From the moment jewellery designers revealed "Space & Cosmos" as the season's theme, I coined the name "Starburst" and mapped 13 content buckets — planets, stars, moon phases, solar polarity — then pushed creativity to represent each in a magical, out-of-this-world manner that resonated with the Mia woman.</p>
+      <div class="series-links">
+        <a href="https://www.instagram.com/reel/CzEMU8soCmn/" target="_blank" class="tag-link tag-pink">Shooting Stars</a>
+        <a href="https://www.instagram.com/reel/CzJHhZ2Stgo/" target="_blank" class="tag-link tag-pink">Sun & Moon Duality</a>
+        <a href="https://www.instagram.com/reel/CzVmDHVI5ce/" target="_blank" class="tag-link tag-pink">Phases of the Moon</a>
+        <a href="https://www.instagram.com/reel/CzGuM2Qy-yz/" target="_blank" class="tag-link tag-pink">Lost in Your Orbit</a>
+        <a href="https://www.instagram.com/reel/CyQrblooq0z/" target="_blank" class="tag-link tag-default">Planets</a>
+        <a href="https://www.instagram.com/reel/CyTc5ceo3Zz/" target="_blank" class="tag-link tag-default">North Star</a>
+        <a href="https://www.instagram.com/reel/CyWFe6KSCkt/" target="_blank" class="tag-link tag-default">Crescent Moon</a>
+        <a href="https://www.instagram.com/reel/Czv-1sfSqjc/" target="_blank" class="tag-link tag-default">Navgraha</a>
+        <a href="https://www.instagram.com/reel/CzygPByydua/" target="_blank" class="tag-link tag-default">Orange Peel</a>
+        <a href="https://www.instagram.com/reel/Cz3q9HXy4Pj/" target="_blank" class="tag-link tag-default">Nosepins</a>
+        <a href="https://www.instagram.com/reel/Cz80ivlSsJB/" target="_blank" class="tag-link tag-default">Nakshatra</a>
+        <a href="https://www.instagram.com/reel/Cz5lQL6ybjC/" target="_blank" class="tag-link tag-default">Chaandbali</a>
+      </div>
+      <div style="margin-top:12px;">
+        <p style="font-size:11px;color:var(--text-light);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;">Product Videos</p>
+        <div class="series-links">
+          <a href="https://www.instagram.com/reel/CztW0NJyecq/" target="_blank" class="tag-link tag-default">Long Danglers</a>
+          <a href="https://www.instagram.com/reel/CzoPav3SdXI/" target="_blank" class="tag-link tag-default">Pink Sapphire Ring</a>
+          <a href="https://www.instagram.com/reel/Czln4tdSaSx/" target="_blank" class="tag-link tag-default">Bangle</a>
+          <a href="https://www.instagram.com/reel/Cy0vGgmSbuv/" target="_blank" class="tag-link tag-default">Stellar Necklace</a>
+          <a href="https://www.instagram.com/reel/CyyGewdST9T/" target="_blank" class="tag-link tag-default">Orbit Ring</a>
+          <a href="https://www.youtube.com/watch?v=DOYj0GG2gT8" target="_blank" class="tag-link tag-pink">Design Inspiration Film</a>
+          <a href="https://www.youtube.com/watch?v=99CchThIw_0" target="_blank" class="tag-link tag-pink">The Star In You Web Series</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="series-card">
+      <div class="series-title">✦ Nature's Finest — An Ode to Nature's Finest Creation, You</div>
+      <p class="series-desc">Leveraging the intrinsic beauty of nature, this campaign blended organic elegance with fine craftsmanship — proving that luxury can be effortless, fluid, and in sync with nature.</p>
+      <div class="series-links">
+        <a href="https://www.youtube.com/watch?v=mdyz6FwGs7g" target="_blank" class="tag-link tag-pink">Campaign Film</a>
+        <a href="https://www.instagram.com/reel/CsgkE1rAW9x/" target="_blank" class="tag-link tag-default">Nature Is Your Muse</a>
+        <a href="https://www.instagram.com/reel/Csv5GaOgrin/" target="_blank" class="tag-link tag-default">Renew</a>
+        <a href="https://www.instagram.com/reel/Csd3k1Ag67H/" target="_blank" class="tag-link tag-default">Calm</a>
+      </div>
+    </div>
+
+    <div class="series-card">
+      <div class="series-title">✦ Rare Pair — Valentine's Minisodes</div>
+      <p class="series-desc">Celebrating two distinct individuals forming one coherent unit — just like Mia's Rare Pair collection where a diamond and natural gemstone come together, perfectly mismatched.</p>
+      <div class="series-links">
+        <a href="https://www.instagram.com/reel/CoDEX1MgZFT/" target="_blank" class="tag-link tag-pink">Pink Sapphire</a>
+        <a href="https://www.instagram.com/reel/CoSEzdngJcQ/" target="_blank" class="tag-link tag-pink">Blue Topaz</a>
+        <a href="https://www.instagram.com/reel/CoZsZFLALla/" target="_blank" class="tag-link tag-pink">Red Garnet</a>
+      </div>
+    </div>
+
+    <div class="series-card">
+      <div class="series-title">✦ Zodiac Collection — 12-Part Reel Series</div>
+      <p class="series-desc">A 12-part series bringing out the personalities of the Mia Zodiac, crafted end-to-end — from in-store visual elements to social and website content.</p>
+      <div class="series-links">
+        <a href="https://www.instagram.com/reel/C0y8OGoytqB/" target="_blank" class="tag-link tag-default">Aries</a>
+        <a href="https://www.instagram.com/reel/C01eU7eI6kk/" target="_blank" class="tag-link tag-default">Taurus</a>
+        <a href="https://www.instagram.com/reel/C04F5qky87x/" target="_blank" class="tag-link tag-default">Gemini</a>
+        <a href="https://www.instagram.com/reel/C06lhCcSQ4x/" target="_blank" class="tag-link tag-default">Cancer</a>
+        <a href="https://www.instagram.com/reel/C09MYEAIk3M/" target="_blank" class="tag-link tag-default">Leo</a>
+        <a href="https://www.instagram.com/reel/Cw2iWZWSJcD/" target="_blank" class="tag-link tag-default">Virgo</a>
+        <a href="https://www.instagram.com/reel/Cw5QtLySVn1/" target="_blank" class="tag-link tag-default">Libra</a>
+        <a href="https://www.instagram.com/reel/Cw7sR8nyPeW/" target="_blank" class="tag-link tag-default">Scorpio</a>
+        <a href="https://www.instagram.com/reel/Cw-QoZVyQqU/" target="_blank" class="tag-link tag-default">Sagittarius</a>
+        <a href="https://www.instagram.com/reel/CxA7yj_SuIg/" target="_blank" class="tag-link tag-default">Capricorn</a>
+        <a href="https://www.instagram.com/reel/CxDaz6FyUG9/" target="_blank" class="tag-link tag-default">Aquarius</a>
+        <a href="https://www.instagram.com/reel/C0wVVcAyyZD/" target="_blank" class="tag-link tag-default">Pisces</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OCCASIONS ── -->
+  <div class="section" id="occasions">
+    <div class="brand-badge"><span class="dot"></span>Mia by Tanishq · Seasonal</div>
+    <div class="section-label">Seasonal & Occasion</div>
+    <div class="section-title">Offers, Occasions & Collection Films</div>
+    <div class="section-divider"></div>
+    <div class="campaign-grid">
+
+      <div class="campaign-card">
+        <div class="card-header">
+          <div class="card-tag">Rakhi 2023</div>
+          <div class="card-title">Silver Rakhi for Brother · Return Gift for Sister</div>
+        </div>
+        <div class="card-body">
+          <div class="card-links">
+            <a href="https://www.youtube.com/watch?v=KRSSTbIIG8c" target="_blank" class="btn btn-dark">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Silver Rakhi
+            </a>
+            <a href="https://www.youtube.com/watch?v=xi_azQFa800" target="_blank" class="btn btn-outline">Return Gift</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header">
+          <div class="card-tag">Mother's Day 2023</div>
+          <div class="card-title">Mother's Day Campaign Film</div>
+        </div>
+        <div class="card-body">
+          <div class="card-links">
+            <a href="https://www.youtube.com/watch?v=QtueEqT64C0" target="_blank" class="btn btn-dark">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header">
+          <div class="card-tag">Rakhi 2022</div>
+          <div class="card-title">Rakhi Campaign Film</div>
+        </div>
+        <div class="card-body">
+          <div class="card-links">
+            <a href="https://www.youtube.com/watch?v=EfGcJzFqZ7w" target="_blank" class="btn btn-dark">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header">
+          <div class="card-tag">Father's Day 2022</div>
+          <div class="card-title">Father's Day Campaign Film</div>
+        </div>
+        <div class="card-body">
+          <div class="card-links">
+            <a href="https://www.youtube.com/watch?v=6ItvP4Tg0Rw" target="_blank" class="btn btn-dark">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── INDRIYA ── -->
+  <div class="section" id="indriya">
+    <div class="section-label">Aug 2025 – Present</div>
+    <div class="section-title">Indriya, Novel Jewels — Aditya Birla Group</div>
+    <p class="section-desc">Senior Manager – Product Communication. Leading product communication strategy and collections marketing for a new-age premium lifestyle brand competing with legacy players.</p>
+    <div class="section-divider"></div>
+
+    <div class="indriya-banner">
+      <div class="indriya-logo-box">
+        <div class="brand-name">Indriya</div>
+        <div class="brand-sub">Aditya Birla Group</div>
+      </div>
+      <div class="indriya-info">
+        <h3>Senior Manager — Product Communication</h3>
+        <p>500M+ Impressions · #1 SOV Maharashtra · 5% CRM CTRs (vs. &lt;1% industry avg) · 133% Q3 retail walk-in targets · Pan India Diamond Campaign</p>
+      </div>
+    </div>
+
+    <div class="campaign-grid">
+
+      <div class="campaign-card">
+        <div class="card-header indriya-hdr">
+          <div class="card-tag">★ Pan India Diamond Campaign · 2026</div>
+          <div class="card-title">The Sparkliest Diamonds. Chosen for You. ✨</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Positioning Indriya diamonds as the sparkliest diamond jewellery and creating authority in the Indian diamond jewellery market. Built on an industry-first benchmark — only 1 in 5 natural diamonds meets Indriya's sparkle standard. Featuring Aditi Rao Hydari, amplified through 360° media.</p>
+          <div class="card-links">
+            <a href="https://youtu.be/96LNaB0jOHM" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+            <a href="https://www.instagram.com/reel/DZxV9QroZ4V/" target="_blank" class="btn btn-outline">Teaser Reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header indriya-hdr">
+          <div class="card-tag">Regional Bridal · Bihar · Madhubani Art</div>
+          <div class="card-title">Madhuragini — The Bridal Collection of Bihar</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Creating brand relevancy in Bihar by launching a region-specific, nuanced wedding campaign highlighting the art and craft of Madhubani — the pride of Bihar. Weaves Bihar's sacred Madhubani art into bridal jewellery, drawing from the cultural heritage of the wedding of Lord Ram and Sita.</p>
+          <div class="card-links">
+            <a href="https://youtu.be/yjtJkP7pZFU" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header indriya-hdr">
+          <div class="card-tag">Regional Bridal · Rajasthan · Rajputana Heritage</div>
+          <div class="card-title">Padma Ranjini — Bridal Collection of Rajasthan</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Reimagines Rajasthan's architectural and artistic legacy into a modern heirloom. Padma Ranjini celebrates the regal bride through three intricate layers rooted in rich Rajputana traditions.</p>
+          <div class="card-links">
+            <a href="https://youtu.be/IU5cfVspe50" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header indriya-hdr">
+          <div class="card-tag">Regional Bridal · Gujarat · Vibrant Culture</div>
+          <div class="card-title">Raasvi — Bridal Collection of Gujarat</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Celebrating the bride you dreamt of becoming, rooted in the joy, colour, and spirited festivities of Gujarat. Raasvi features exquisite necklace sets crafted from the state's vibrant cultural traditions.</p>
+          <div class="card-links">
+            <a href="https://youtu.be/sEXuyPr1vFw" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header indriya-hdr">
+          <div class="card-tag">Regional Bridal · Temple Jewellery</div>
+          <div class="card-title">Anantara — Bridal Temple Jewellery Collection</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Celebrates the spirit of wearing culture with pride — Anantara brings the grandeur of temple jewellery to the modern bride through exquisite craftsmanship rooted in South Indian tradition.</p>
+          <div class="card-links">
+            <a href="https://youtu.be/w29CmQBOdMk" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header indriya-hdr">
+          <div class="card-tag">Regional Bridal · Maharashtra · Heritage</div>
+          <div class="card-title">Rajashree — Bridal Collection of Maharashtra</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Recites countless tales of Maharashtra's history and pays tribute to its pride and glory. Rajashree translates the state's regal legacy into bridal jewellery for the modern Maharashtrian bride.</p>
+          <div class="card-links">
+            <a href="https://youtu.be/QSJaauw5TmM" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch on YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BAU ── -->
+  <div class="section" id="bau">
+    <div class="brand-badge"><span class="dot"></span>Mia by Tanishq · Always-On Social</div>
+    <div class="section-label">Always-On</div>
+    <div class="section-title">Best BAU Social Media Content</div>
+    <p class="section-desc">Standout pieces from the always-on content engine — trend-led, culture-first, and built to stop the scroll.</p>
+    <div class="section-divider"></div>
+    <div class="bau-grid">
+      <a href="https://www.instagram.com/reel/CrTOb1wACBS/" target="_blank" class="bau-item">Gold Coins as Arcade Coins</a>
+      <a href="https://www.instagram.com/reel/CpprgPcg6fp/" target="_blank" class="bau-item">Ring Stacking Trend</a>
+      <a href="https://www.instagram.com/reel/CsWMlLvA-FK/" target="_blank" class="bau-item">Hathphool</a>
+      <a href="https://www.instagram.com/reel/CsYt81zg68k/" target="_blank" class="bau-item">Septum Rings</a>
+      <a href="https://www.instagram.com/reel/CyfbPiaMghL/" target="_blank" class="bau-item">Navratri: Red</a>
+      <a href="https://www.instagram.com/reel/Cyc3knTN189/" target="_blank" class="bau-item">Navratri: White</a>
+      <a href="https://www.instagram.com/reel/CyifL9QtKJG/" target="_blank" class="bau-item">Navratri: Blue</a>
+      <a href="https://www.instagram.com/reel/C7lPjElKiXr/" target="_blank" class="bau-item">BTS with Rakul: Pearls</a>
+    </div>
+  </div>
+
+  <!-- ── MEDIA INNOVATIONS ── -->
+  <div class="section" id="media-innovations">
+    <div class="brand-badge"><span class="dot"></span>Mia by Tanishq · First-in-Category</div>
+    <div class="section-label">Pioneered</div>
+    <div class="section-title">Media Innovations</div>
+    <p class="section-desc">First-in-category formats that pushed the jewellery brand into spaces no jewellery brand had gone before — from anamorphic 3D screens to live mall activations.</p>
+    <div class="section-divider"></div>
+
+    <div class="campaign-grid">
+      <div class="campaign-card">
+        <div class="card-header mia-hdr">
+          <div class="card-tag">Retail Experiential · Mall Activation</div>
+          <div class="card-title">Nexus Seawoods Live Activation</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">A high-energy, on-ground brand activation at Nexus Seawoods mall — bringing Mia's world to life in a premium retail environment. Designed to drive walk-ins, trial, and cultural buzz among premium lifestyle shoppers in Navi Mumbai.</p>
+          <div class="card-links">
+            <a href="https://www.instagram.com/reel/DI6SVlKKLJA/" target="_blank" class="btn btn-pink">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              View on Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header mia-hdr">
+          <div class="card-tag">OOH · First-in-Category · Anamorphic 3D</div>
+          <div class="card-title">Anamorphic 3D Billboard — India First for Jewellery</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Pioneered the use of anamorphic 3D screens in the jewellery category — bringing Mia's jewellery to life in a larger-than-life visual spectacle. Along with TOI bookmark ads, metro branding, and light-up hoardings, these formats made Mia synonymous with creative media firsts in jewellery.</p>
+          <div class="card-links">
+            <span class="btn btn-outline" style="cursor:default;">First-in-Category Innovation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-card">
+        <div class="card-header mia-hdr">
+          <div class="card-tag">Experiential · NH7 Weekender · Gen-Z</div>
+          <div class="card-title">NH7 Weekender — AR Try-On Activation</div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Took Mia to India's biggest indie music festival, integrating AR jewellery try-ons with on-ground content creation — generating 200+ high-intent Gen-Z leads and placing the brand firmly in youth culture.</p>
+          <div class="card-links">
+            <span class="btn btn-outline" style="cursor:default;">200+ High-Intent Gen-Z Leads</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Anupama Aggarwal &nbsp;·&nbsp; <a href="mailto:anupamaa1998@gmail.com">anupamaa1998@gmail.com</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/anupama-aggarwal-1362aa13a/" target="_blank">LinkedIn</a> &nbsp;·&nbsp; Mumbai</p>
+  <p style="margin-top:8px;font-size:11px;">★ 30 Under 30 · Brand Marketers Academy, Cannes Lions Festival of Creativity 2026</p>
+</div>
+
+</body>
+</html>
